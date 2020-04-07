@@ -20,7 +20,15 @@ struct Meme {
                          originalImage: UIImage,
                          memeImage: UIImage) {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage, memeImage: memeImage)
+        //Save to AppDelegate Meme Array
+        self.saveToSharedModel(meme)
         UIImageWriteToSavedPhotosAlbum(meme.memeImage, self, nil, nil)
         
+    }
+    
+    private static func saveToSharedModel(_ meme: Meme) {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
 }

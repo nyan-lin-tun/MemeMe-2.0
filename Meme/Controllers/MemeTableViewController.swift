@@ -26,8 +26,6 @@ class MemeTableViewController: UITableViewController {
         return 3
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let memeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "memeTableViewCell") as! MemeTableViewCell
         memeTableViewCell.memeImage.image = UIImage(named: "wow")

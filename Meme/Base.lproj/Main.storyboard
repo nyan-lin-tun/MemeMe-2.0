@@ -79,20 +79,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xkq-bR-Ipa">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xkq-bR-Ipa">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Lhx-mJ-1OC">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionViewCell" id="Lhx-mJ-1OC" customClass="MemeCollectionViewCell" customModule="Meme" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tA0-J4-oql">
                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YFW-Jo-m4f">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YFW-Jo-m4f" firstAttribute="centerY" secondItem="tA0-J4-oql" secondAttribute="centerY" id="1l6-R1-klh"/>
+                                        <constraint firstItem="YFW-Jo-m4f" firstAttribute="centerX" secondItem="tA0-J4-oql" secondAttribute="centerX" id="V8f-OX-oZ8"/>
+                                        <constraint firstItem="YFW-Jo-m4f" firstAttribute="width" secondItem="tA0-J4-oql" secondAttribute="width" id="byp-yK-foM"/>
+                                        <constraint firstItem="YFW-Jo-m4f" firstAttribute="height" secondItem="tA0-J4-oql" secondAttribute="height" id="iAd-YR-JVO"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="memeImage" destination="YFW-Jo-m4f" id="0Bb-WB-GdU"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -101,6 +115,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="A7C-Oq-hoL"/>
+                    <connections>
+                        <outlet property="memeCollectionViewFlowLayout" destination="Xkq-bR-Ipa" id="1Yd-1e-C7d"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APO-lW-mds" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -237,11 +254,11 @@
             </objects>
             <point key="canvasLocation" x="-2184" y="-569"/>
         </scene>
-        <!--Meme TableView-->
+        <!--Navigation Controller-->
         <scene sceneID="qN1-Tn-r8l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7tg-e0-wta" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Meme TableView" image="list.dash" catalog="system" id="tB1-bI-vcL">
+                    <tabBarItem key="tabBarItem" title="" image="list.dash" catalog="system" id="tB1-bI-vcL">
                         <color key="badgeColor" red="0.99740809200000002" green="0.57274717090000005" blue="0.034656811510000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -258,11 +275,11 @@
             </objects>
             <point key="canvasLocation" x="-1088" y="-179"/>
         </scene>
-        <!--Meme CollectionView-->
+        <!--Navigation Controller-->
         <scene sceneID="NqE-o5-hF4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u61-im-cpr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Meme CollectionView" image="square.grid.3x2.fill" catalog="system" id="OJD-LI-q0H">
+                    <tabBarItem key="tabBarItem" title="" image="square.grid.3x2.fill" catalog="system" id="OJD-LI-q0H">
                         <color key="badgeColor" red="0.99740809200000002" green="0.57274717090000005" blue="0.034656811510000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>

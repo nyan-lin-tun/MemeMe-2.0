@@ -8,51 +8,48 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class MemeCollectionViewController: UICollectionViewController {
 
+    var count: Int = 0
+    
+    @IBOutlet weak var memeCollectionViewFlowLayout: UICollectionViewFlowLayout!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        self.setUpNavigationItems()
+        self.setUpFlowLayout()
+        
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    private func setUpFlowLayout() {
+        let space: CGFloat = 4
+        // Multiply with 4 (2 for spacing between 3 cells and another 2 for left and right spacing)
+        let dimession: CGFloat = (self.view.frame.size.width - (space * 4)) / 3.0
+        memeCollectionViewFlowLayout.minimumLineSpacing = 4
+        memeCollectionViewFlowLayout.minimumInteritemSpacing = 4
+        memeCollectionViewFlowLayout.itemSize = CGSize(width: dimession, height: dimession)
+        memeCollectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     }
-    */
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return 4
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
-        return cell
+        let memeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        memeCollectionCell.backgroundColor = .blue
+        memeCollectionCell.memeImage.image = UIImage(named: "wow")
+        
+        return memeCollectionCell
     }
 
     // MARK: UICollectionViewDelegate

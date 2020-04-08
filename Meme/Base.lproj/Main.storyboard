@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="-179.46428571428569"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Meme Collection View Controller-->
         <scene sceneID="oms-M1-qou">
             <objects>
-                <collectionViewController id="xeF-mg-yLK" sceneMemberID="viewController">
+                <collectionViewController id="xeF-mg-yLK" customClass="MemeCollectionViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="eMT-vC-ffn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,6 +114,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="7tg-e0-wta" kind="relationship" relationship="viewControllers" id="Vew-fZ-1da"/>
@@ -124,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="-2184" y="208"/>
         </scene>
-        <!--Meme View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,13 +235,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1504" y="-919"/>
+            <point key="canvasLocation" x="-2184" y="-569"/>
         </scene>
         <!--Meme TableView-->
         <scene sceneID="qN1-Tn-r8l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7tg-e0-wta" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Meme TableView" selectedImage="list.dash" catalog="system" id="tB1-bI-vcL"/>
+                    <tabBarItem key="tabBarItem" title="Meme TableView" image="list.dash" catalog="system" id="tB1-bI-vcL">
+                        <color key="badgeColor" red="0.99740809200000002" green="0.57274717090000005" blue="0.034656811510000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZnL-sK-j3L">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -259,7 +262,9 @@
         <scene sceneID="NqE-o5-hF4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u61-im-cpr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Meme CollectionView" selectedImage="square.grid.3x2" catalog="system" id="OJD-LI-q0H"/>
+                    <tabBarItem key="tabBarItem" title="Meme CollectionView" image="square.grid.3x2.fill" catalog="system" id="OJD-LI-q0H">
+                        <color key="badgeColor" red="0.99740809200000002" green="0.57274717090000005" blue="0.034656811510000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fj-Ig-6yl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -277,7 +282,7 @@
     </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="square.grid.3x2" catalog="system" width="128" height="80"/>
+        <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
         <image name="wow" width="3584" height="2240"/>
     </resources>
 </document>

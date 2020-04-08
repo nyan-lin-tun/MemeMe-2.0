@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension MemeViewController: UIFontPickerViewControllerDelegate {
+extension MemeEditorViewController: UIFontPickerViewControllerDelegate {
     func fontPickerViewControllerDidPickFont(_ viewController: UIFontPickerViewController) {
         guard let descriptor = viewController.selectedFontDescriptor else { return }
         let selectedFont = UIFont(descriptor: descriptor, size: 30)

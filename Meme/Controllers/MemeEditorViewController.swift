@@ -8,9 +8,8 @@
 
 import UIKit
 
-class MemeViewController: UIViewController {
+class MemeEditorViewController: UIViewController {
 
-    
     @IBOutlet weak var topToolBar: UIToolbar!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     
@@ -120,9 +119,11 @@ class MemeViewController: UIViewController {
     
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        self.activityButton.isEnabled = false
-        self.memeImageView.image = UIImage(named: "")
-        self.setUpTextFields()
+        self.dismiss(animated: true, completion: nil)
+        
+//        self.activityButton.isEnabled = false
+//        self.memeImageView.image = UIImage(named: "")
+//        self.setUpTextFields()
     }
     
     @IBAction func albumAction(_ sender: UIBarButtonItem) {
@@ -145,7 +146,7 @@ class MemeViewController: UIViewController {
 }
 
 
-extension MemeViewController {
+extension MemeEditorViewController {
     // MARK: Keyboard Notifications
     
     func subscribeToKeyboardNotifications() {

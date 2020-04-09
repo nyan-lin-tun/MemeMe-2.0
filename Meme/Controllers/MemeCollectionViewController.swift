@@ -53,4 +53,9 @@ class MemeCollectionViewController: UICollectionViewController {
         return memeCollectionCell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let memeDetailVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        memeDetailVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(memeDetailVC, animated: true)
+    }
 }

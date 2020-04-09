@@ -20,5 +20,15 @@ extension UIViewController {
         memeEditorVC.modalPresentationStyle = .fullScreen
         self.present(memeEditorVC, animated: true, completion: nil)
     }
+    
+    func setUpEditNavigationItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.openMemeEditorAction))
+    }
+    
+    @objc func editOnMemeEditorAction() {
+        let memeEditorVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        memeEditorVC.modalPresentationStyle = .fullScreen
+        self.present(memeEditorVC, animated: true, completion: nil)
+    }
 
 }

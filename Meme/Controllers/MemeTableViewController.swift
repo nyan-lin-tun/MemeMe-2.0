@@ -34,5 +34,11 @@ class MemeTableViewController: UITableViewController {
         return memeTableViewCell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memeDetailVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        memeDetailVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(memeDetailVC, animated: true)
+    }
+    
 
 }

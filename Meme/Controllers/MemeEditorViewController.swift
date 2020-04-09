@@ -73,11 +73,16 @@ class MemeEditorViewController: UIViewController {
     @IBAction func activityAction(_ sender: UIBarButtonItem) {
         let finalMemeImage = generateMemedImage()
         let activityVC = UIActivityViewController(activityItems: [finalMemeImage], applicationActivities: nil)
+        let meme = Meme(topText: self.topTextField.text!, bottomText: self.bottomTextField.text!, originalImage: self.memeImageView.image!, memeImage: finalMemeImage)
+        
         activityVC.completionWithItemsHandler = { activity, success, items, error in
             if activity?.rawValue != "com.apple.UIKit.activity.SaveToCameraRoll" {
                 if success {
-                    Meme.saveMeme(topTextField: self.topTextField, bottomTextField: self.bottomTextField, originalImage: self.memeImageView.image!, memeImage: finalMemeImage)
+                    Meme.saveMeme(meme: meme)
+//                    Meme.saveMeme(topTextField: self.topTextField, bottomTextField: self.bottomTextField, originalImage: self.memeImageView.image!, memeImage: finalMemeImage)
                 }
+            }else {
+                Meme.storeToSharedModel(meme)
             }
         }
         self.present(activityVC, animated: true, completion: nil)

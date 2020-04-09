@@ -30,5 +30,17 @@ extension UIViewController {
         memeEditorVC.modalPresentationStyle = .fullScreen
         self.present(memeEditorVC, animated: true, completion: nil)
     }
+    
+    //Check for data available or not
+    func checkMemeDataAlert(memes: [Meme]) {
+        if memes.isEmpty {
+            let alertController = UIAlertController(title: "No meme is available.", message: "Create your own for fun.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Create", style: .default, handler: { (_) in
+                self.openMemeEditorAction()
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
 
 }

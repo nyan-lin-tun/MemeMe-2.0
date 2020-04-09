@@ -10,17 +10,22 @@ import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
 
-    var count: Int = 0
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var memes = [Meme]()
     
     @IBOutlet weak var memeCollectionViewFlowLayout: UICollectionViewFlowLayout!
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.memes = appDelegate.memes
+        self.collectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Sent Memes"
         self.setUpNavigationItems()
         self.setUpFlowLayout()
+        self.checkMemeDataAlert(memes: memes)
         
     }
 
@@ -42,13 +47,13 @@ class MemeCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let memeCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         memeCollectionCell.backgroundColor = .blue
-        memeCollectionCell.memeImage.image = UIImage(named: "wow")
+        memeCollectionCell.memeImage.image = memes[indexPath.row].memeImage
         
         return memeCollectionCell
     }
@@ -56,6 +61,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let memeDetailVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         memeDetailVC.modalPresentationStyle = .fullScreen
+        memeDetailVC.meme = self.memes[indexPath.row]
         self.navigationController?.pushViewController(memeDetailVC, animated: true)
     }
 }

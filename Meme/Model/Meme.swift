@@ -16,15 +16,12 @@ struct Meme {
     let memeImage: UIImage
        
     static func saveMeme(meme: Meme) {
-        //Save to AppDelegate Meme Array
         self.storeToSharedModel(meme)
         UIImageWriteToSavedPhotosAlbum(meme.memeImage, self, nil, nil)
         
     }
     
     static func storeToSharedModel(_ meme: Meme) {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        memes.append(meme)
     }
 }

@@ -9,14 +9,14 @@
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
-
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var memes = [Meme]()
     
     @IBOutlet weak var memeCollectionViewFlowLayout: UICollectionViewFlowLayout!
     
     override func viewWillAppear(_ animated: Bool) {
-        self.memes = appDelegate.memes
+        self.collectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         self.collectionView.reloadData()
     }
     
@@ -47,7 +47,7 @@ class MemeCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,7 +61,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let memeDetailVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         memeDetailVC.modalPresentationStyle = .fullScreen
-        memeDetailVC.meme = self.memes[indexPath.row]
+        memeDetailVC.meme = memes[indexPath.row]
         self.navigationController?.pushViewController(memeDetailVC, animated: true)
     }
 }

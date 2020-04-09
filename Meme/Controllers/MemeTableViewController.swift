@@ -10,13 +10,17 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var memes = [Meme]()
-
     override func viewWillAppear(_ animated: Bool) {
-        self.memes = appDelegate.memes
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -28,8 +32,6 @@ class MemeTableViewController: UITableViewController {
         self.checkMemeDataAlert(memes: memes)
     }
     
-    
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,12 +39,12 @@ class MemeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let memeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "memeTableViewCell") as! MemeTableViewCell
-        let meme = self.memes[indexPath.row]
+        let meme = memes[indexPath.row]
         memeTableViewCell.memeImage.image = meme.memeImage
         memeTableViewCell.memeText.text = "\(meme.topText)\n\(meme.bottomText)"
 
@@ -52,8 +54,15 @@ class MemeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let memeDetailVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         memeDetailVC.modalPresentationStyle = .fullScreen
-        memeDetailVC.meme = self.memes[indexPath.row]
+        memeDetailVC.meme = memes[indexPath.row]
         self.navigationController?.pushViewController(memeDetailVC, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            memes.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
     }
     
 

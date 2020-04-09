@@ -78,17 +78,21 @@ class MemeEditorViewController: UIViewController {
         activityVC.completionWithItemsHandler = { activity, success, items, error in
             if activity?.rawValue != "com.apple.UIKit.activity.SaveToCameraRoll" {
                 if success {
+                    //Share to social
                     Meme.saveMeme(meme: meme)
                     self.dismiss(animated: true, completion: nil)
                 }
             }else {
+                //Save to Camera Roll
                 Meme.storeToSharedModel(meme)
-                self.dismiss(animated: true, completion: nil)
+                let waitingTime = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: waitingTime){
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
         self.present(activityVC, animated: true, completion: nil)
     }
-    
     
     @IBAction func fontsAction(_ sender: UIBarButtonItem) {
         let fontPickerConfiguration = UIFontPickerViewController().configuration

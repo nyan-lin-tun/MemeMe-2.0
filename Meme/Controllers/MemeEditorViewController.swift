@@ -79,10 +79,11 @@ class MemeEditorViewController: UIViewController {
             if activity?.rawValue != "com.apple.UIKit.activity.SaveToCameraRoll" {
                 if success {
                     Meme.saveMeme(meme: meme)
-//                    Meme.saveMeme(topTextField: self.topTextField, bottomTextField: self.bottomTextField, originalImage: self.memeImageView.image!, memeImage: finalMemeImage)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }else {
                 Meme.storeToSharedModel(meme)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         self.present(activityVC, animated: true, completion: nil)
